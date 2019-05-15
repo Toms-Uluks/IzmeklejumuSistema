@@ -1,0 +1,83 @@
+<div *ngIf="!preview">
+  <div>
+    <mat-form-field class="example-full-width">
+      <input matInput  placeholder="Vārds, Uzvārds" [(ngModel)]="name">
+    </mat-form-field>  
+  </div>  
+  <div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Personas kods" [(ngModel)]="personasKods"/> 
+    </mat-form-field>
+  </div>    
+  <div>
+      Isthmus:
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="isthmusSize">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Struktūra" [(ngModel)]="isthmusStructure">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Kontūras" [(ngModel)]="isthmusContour">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Veidojumi" [(ngModel)]="isthmusAnomalities">
+        </mat-form-field>
+      </div>
+  </div>
+  <div>
+      Kreisā daiva:
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="leftSideSize">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Struktūra" [(ngModel)]="leftSideStructure">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Kontūras" [(ngModel)]="leftSideContour">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Veidojumi" [(ngModel)]="leftSideAnomalities">
+        </mat-form-field>
+      </div>
+  </div>
+  <div>
+      Labā daiva:
+      <div>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="rightSideSize">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Struktūra" [(ngModel)]="rightSideStructure">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Kontūras" [(ngModel)]="rightSideContour">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput  placeholder="Veidojumi" [(ngModel)]="rightSideAnomalities">
+        </mat-form-field>
+      </div>
+  </div>
+  <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="date" placeholder="Izmeklējuma datums" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+      <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+      <mat-datepicker #date></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field  class="selector">
+      <mat-select [(value)]="doctorName">
+        <mat-option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  
+</div>
+<div *ngIf="preview">
+
+</div>
+<button mat-raised-button color="accent" (click)="preview = !preview">{{preview ? 'Labot' : 'Apskatīt'}}</button>

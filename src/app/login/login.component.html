@@ -1,0 +1,11 @@
+<div class="login form-wrap">
+  <form [formGroup]="loginForm">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="user" formControlName="user">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput type="password" placeholder="password" formControlName="password">
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="onSubmit()">Log in</button>
+  </form>
+</div>

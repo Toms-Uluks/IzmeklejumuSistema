@@ -1,0 +1,100 @@
+<div class="example-form" *ngIf="!preview">
+  <div>
+    <mat-form-field class="example-full-width">
+      <input matInput  placeholder="Vārds, Uzvārds" [(ngModel)]="name">
+    </mat-form-field>  
+  </div>  
+  <div>
+    <mat-form-field class="example-full-width">
+      <input matInput placeholder="Personas kods" [(ngModel)]="personasKods"/> 
+    </mat-form-field>
+  </div>
+  <div>
+    Aksilāri limfmezgli:
+      <mat-form-field class="selector">
+        <mat-select [(value)]="limfmezgli">
+          <mat-option value="true">vizualizējās</mat-option>
+          <mat-option value="false">nevizualizējas</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="limfmezgli == 'true'">
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Vizualizējās" [(ngModel)]="limfmezgliReason"></textarea>
+          </mat-form-field>
+      </div>
+  </div>
+  
+  <div>
+    Abos krūts diedzeros:
+    <mat-form-field  class="selector">
+      <mat-select [(value)]="bothchest">
+        <mat-option value="true">fibrozu audu hiperplāzijas zonas uz šī fona atsevišķas piena dziedzera daiviņas.</mat-option>
+        <mat-option value="other">Cits</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="bothchest == 'other'">
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Cits" [(ngModel)]="bothchestReason"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div>
+    Veidojumi: 
+    <mat-form-field  class="selector">
+      <mat-select [(value)]="anomalities">
+        <mat-option value="true">norobežotus veidojumus nevizualizē</mat-option>
+        <mat-option value="other">Cits</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="anomalities == 'other'">
+      <mat-form-field class="example-full-width">
+        <textarea matInput placeholder="Cits" [(ngModel)]="anomalitiesReason"></textarea>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div>
+    Slēdziens: 
+    <mat-form-field  class="selector">
+      <mat-select [(value)]="final">
+        <mat-option value="true">fibroza mastopātijas</mat-option>
+        <mat-option value="other">Cits</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="final == 'other'">
+        <mat-form-field class="example-full-width">
+          <textarea matInput placeholder="Cits" [(ngModel)]="finalReason"></textarea>
+        </mat-form-field>
+    </div>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <input matInput [matDatepicker]="date" placeholder="Izmeklējuma datums" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+      <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+      <mat-datepicker #date></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field  class="selector">
+      <mat-select [(value)]="doctorName">
+        <mat-option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+</div>
+<div id="print-section" *ngIf="preview">
+    <p>Vārds, Uzvārds: {{name}}</p>
+    <p>Personas kods: {{personasKods}}</p>
+    <p>Aksilāri limfmezgli: {{limfmezgli ? limfmezgliReason : 'nevizualizējas'}}</p>
+    <p>Abos krūts diedzeros: {{bothchest == 'other' ? bothchestReason : 'fibrozu audu hiperplāzijas zonas uz šī fona atsevišķas piena dziedzera daiviņas.'}}</p>
+    <p>Veidojumi: {{anomalities == 'other' ? anomalitiesReason : 'norobežotus veidojumus nevizualizē.'}}</p>
+    <p>Slēdziens: {{final == 'other' ? finalReason : 'fibroza mastopātijas'}}</p>
+    <p>Izmeklējuma datums: {{dateTaken}}</p>
+    <p>Ārsts: {{doctorName}}</p>
+</div>
+
+<button mat-raised-button color="accent" (click)="preview = !preview">{{preview ? 'Labot' : 'Apskatīt'}}</button>

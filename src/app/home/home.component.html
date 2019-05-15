@@ -1,0 +1,21 @@
+<div>
+  <div class="selector">
+    <mat-form-field>
+      <mat-select [(value)]="selected">
+        <mat-option value="chestUsg">Krūšu USG</mat-option>
+        <mat-option value="abdominalUltrasound">Vēdera dobuma ultrasonografija</mat-option>
+        <mat-option value="thyroidUltrasound">Vairogdziedzera ultrasonografija</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="home">
+    <app-chest-usg *ngIf="selected == 'chestUsg'"></app-chest-usg>
+    <app-abdominal-cavity-ultrasound *ngIf="selected == 'abdominalUltrasound'"></app-abdominal-cavity-ultrasound>
+    <app-thyroid-ultrasound *ngIf="selected == 'thyroidUltrasound'"></app-thyroid-ultrasound>
+    <button mat-raised-button color="primary" (click)="print()">Printēt</button>
+  </div>
+  
+
+</div>
+
