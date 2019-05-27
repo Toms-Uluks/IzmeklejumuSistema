@@ -1,4 +1,125 @@
-<p>
-  abdominal-cavity-ultrasound works!
-</p>
-<button mat-raised-button color="accent" (click)="preview = !preview">{{preview ? 'Labot' : 'Apskatīt'}}</button>
+<div *ngIf="!preview">
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput  placeholder="Vārds, Uzvārds" [(ngModel)]="name">
+      </mat-form-field>  
+    </div>  
+    <div>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Personas kods" [(ngModel)]="personasKods"/> 
+      </mat-form-field>
+    </div>    
+    <div>
+        Aknas:
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Izmērs" [(ngModel)]="liverSize">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+              <input matInput  placeholder="Struktūra" [(ngModel)]="liverStructure">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+              <input matInput  placeholder="Ehogenitāte" [(ngModel)]="liverEphogenicity">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+              <input matInput  placeholder="Intrahepatiskie, ekstrahepatiskie žultsvadi" [(ngModel)]="liverDucts">
+          </mat-form-field>
+        </div>
+    </div>
+    <div>
+        Žultspūslis:
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="leftSideSize">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Struktūra" [(ngModel)]="leftSideStructure">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Kontūras" [(ngModel)]="leftSideContour">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Veidojumi" [(ngModel)]="leftSideAnomalities">
+          </mat-form-field>
+        </div>
+    </div>
+    <div>
+        Labā daiva:
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="rightSideSize">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Struktūra" [(ngModel)]="rightSideStructure">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Kontūras" [(ngModel)]="rightSideContour">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Veidojumi" [(ngModel)]="rightSideAnomalities">
+          </mat-form-field>
+        </div>
+    </div>
+    <div>
+      Slēdziens: 
+      <mat-form-field  class="selector">
+        <mat-select [(value)]="final">
+          <mat-option value="true">fibroza mastopātijas</mat-option>
+          <mat-option value="other">Cits</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <div *ngIf="final == 'other'">
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Cits" [(ngModel)]="finalReason"></textarea>
+          </mat-form-field>
+      </div>
+    </div>
+    <div>
+      <mat-form-field>
+        <input matInput [matDatepicker]="date" placeholder="Izmeklējuma datums" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="date"></mat-datepicker-toggle>
+        <mat-datepicker #date></mat-datepicker>
+      </mat-form-field>
+    </div>
+  
+    <div>
+      <mat-form-field  class="selector">
+        <mat-select [(value)]="doctorName">
+          <mat-option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    
+  </div>
+  <div *ngIf="preview">
+    <div id="print-section" *ngIf="preview">
+      <p>Vārds, Uzvārds: {{name}}</p>
+      <p>Personas kods: {{personasKods}}</p>
+      <div>
+        <p>Isthmus:</p>
+        <p>Izmers: {{isthmusSize}}</p>
+        <p>Struktūra: {{isthmusStructure}}</p>
+        <p>Kontūras: {{isthmusContour}}</p>
+        <p>Veidojumi: {{isthmusAnomalities}}</p>
+      </div>
+      <div>
+        <p>Kreisā daiva:</p>
+        <p>Izmers: {{leftSideSize}}</p>
+        <p>Struktūra: {{leftSideStructure}}</p>
+        <p>Kontūras: {{leftSideContour}}</p>
+        <p>Veidojumi: {{leftSideAnomalities}}</p>
+      </div>
+      <div>
+        <p>Labā daiva:</p>
+        <p>Izmers: {{rightSideSize}}</p>
+        <p>Struktūra: {{rightSideStructure}}</p>
+        <p>Kontūras: {{rightSideContour}}</p>
+        <p>Veidojumi: {{rightSideAnomalities}}</p>
+      </div>
+      <p>Slēdziens: {{final == 'other' ? finalReason : 'fibroza mastopātijas'}}</p>
+      <p>Izmeklējuma datums: {{dateTaken}}</p>
+      <p>Ārsts: {{doctorName}}</p>
+    </div>
+  </div>
+  <button mat-raised-button color="accent" (click)="preview = !preview">{{preview ? 'Labot' : 'Apskatīt'}}</button>
+  

@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
         <head>
           <title>Print tab</title>
           <style>
-          {'.selector' : {'display' : 'none'}, input: {'border-color': 'transparent'}}
+          {'.selector' : {'display' : 'none'}, input: {'border-color': 'transparent', p: {'border':'1px solid black'; 'padding':'10px'}}}
           </style>
         </head>
     <body onload="window.print();window.close()">${printContents}</body>
