@@ -30,36 +30,56 @@
         Žultspūslis:
         <div>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="leftSideSize">
+            <input matInput  placeholder="Sieniņas" [(ngModel)]="bladderWalls">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Struktūra" [(ngModel)]="leftSideStructure">
+            <input matInput  placeholder="Biezums (mm)" [(ngModel)]="bladderWidth">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Kontūras" [(ngModel)]="leftSideContour">
+            <input matInput  placeholder="Ehostruktura" [(ngModel)]="bladderEcostructure">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Veidojumi" [(ngModel)]="leftSideAnomalities">
+            <input matInput  placeholder="Komentāri" [(ngModel)]="bladderComments">
           </mat-form-field>
         </div>
     </div>
     <div>
-        Labā daiva:
+        Aizkuņģa dziedzeris:
         <div>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="rightSideSize">
+            <input matInput  placeholder="Galvas un ķermeņa daļas" [(ngModel)]="pancreaParts">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Struktūra" [(ngModel)]="rightSideStructure">
+            <input matInput  placeholder="Izmērs" [(ngModel)]="pancreaSize">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Kontūras" [(ngModel)]="rightSideContour">
+            <input matInput  placeholder="Ehostruktura" [(ngModel)]="pancreaEcostructure">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Veidojumi" [(ngModel)]="rightSideAnomalities">
+            <input matInput  placeholder="Sienas" [(ngModel)]="pancreaWalls">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Astes daļa" [(ngModel)]="pancreaTail">
           </mat-form-field>
         </div>
     </div>
+    <!--<div>
+        Nieres:
+        <div>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Izmērs" [(ngModel)]="kidneySize">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Lokalizējas" [(ngModel)]="pancreaEcostructure">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Sienas" [(ngModel)]="pancreaWalls">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Astes daļa" [(ngModel)]="pancreaTail">
+          </mat-form-field>
+        </div>
+    </div>-->
     <div>
       Slēdziens: 
       <mat-form-field  class="selector">
