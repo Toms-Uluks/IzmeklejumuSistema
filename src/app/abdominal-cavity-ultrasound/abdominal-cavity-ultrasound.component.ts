@@ -22,7 +22,11 @@ export class AbdominalCavityUltrasoundComponent implements OnInit {
   pancreaWalls: string;
   pancreaTail: string;
   kidneySize: string;
-
+  kidneyContour: string;
+  kidneyParehima: string;
+  kidneyUrostasi: string;
+  kidneyKonrimentus: string;
+  
   final: string;
   doctorName: string;
 

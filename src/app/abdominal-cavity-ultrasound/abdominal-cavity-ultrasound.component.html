@@ -63,23 +63,27 @@
           </mat-form-field>
         </div>
     </div>
-    <!--<div>
+    <div>
         Nieres:
         <div>
           <mat-form-field class="example-full-width">
             <input matInput  placeholder="Izmērs" [(ngModel)]="kidneySize">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Lokalizējas" [(ngModel)]="pancreaEcostructure">
+            <input matInput  placeholder="Kontūras" [(ngModel)]="kidneyContour">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Sienas" [(ngModel)]="pancreaWalls">
+            <input matInput  placeholder="Parenhīma" [(ngModel)]="kidneyParehima">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Astes daļa" [(ngModel)]="pancreaTail">
+            <input matInput  placeholder="Urostāzi" [(ngModel)]="kidneyUrostasi">
           </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Konkrimentus" [(ngModel)]="kidneyKonrimentus">
+          </mat-form-field>
+
         </div>
-    </div>-->
+    </div>
     <div>
       Slēdziens: 
       <mat-form-field  class="selector">
@@ -116,27 +120,39 @@
       <p>Vārds, Uzvārds: {{name}}</p>
       <p>Personas kods: {{personasKods}}</p>
       <div>
-        <p>Isthmus:</p>
-        <p>Izmers: {{isthmusSize}}</p>
-        <p>Struktūra: {{isthmusStructure}}</p>
-        <p>Kontūras: {{isthmusContour}}</p>
-        <p>Veidojumi: {{isthmusAnomalities}}</p>
+        <h2>Aknas:</h2>
+        <p>Izmers: {{liverSize}}</p>
+        <p>Struktūra: {{liverStructure}}</p>
+        <p>Ehogenitāte: {{liverEphogenicity}}</p>
+        <p>Intrahepatiskie, ekstrahepatiskie žultsvadi: {{liverDucts}}</p>
       </div>
       <div>
-        <p>Kreisā daiva:</p>
-        <p>Izmers: {{leftSideSize}}</p>
-        <p>Struktūra: {{leftSideStructure}}</p>
-        <p>Kontūras: {{leftSideContour}}</p>
-        <p>Veidojumi: {{leftSideAnomalities}}</p>
+        <h2>Žultspūslis:</h2>
+        <p>Sieniņas: {{bladderWalls}}</p>
+        <p>Biezums: {{bladderWidth}}</p>
+        <p>Ehostruktura: {{bladderEcostructure}}</p>
+        <p>Komentāri: {{bladderComments}}</p>
       </div>
       <div>
-        <p>Labā daiva:</p>
-        <p>Izmers: {{rightSideSize}}</p>
-        <p>Struktūra: {{rightSideStructure}}</p>
-        <p>Kontūras: {{rightSideContour}}</p>
-        <p>Veidojumi: {{rightSideAnomalities}}</p>
+        <h2>Aizkuņģa dziedzeris:</h2>
+        <p>Galvas un ķermeņa daļas: {{pancreaParts}}</p>
+        <p>Izmērs: {{pancreaSize}}</p>
+        <p>Ehostruktura: {{pancreaEcostructure}}</p>
+        <p>Sieniņas: {{pancreaWalls}}</p>
+        <p>Astes daļa: {{pancreaTail}}</p>
       </div>
-      <p>Slēdziens: {{final == 'other' ? finalReason : 'fibroza mastopātijas'}}</p>
+      <div>
+        <h2>Nieres:</h2>
+        <p>Izmērs: {{kidneySize}}</p>
+        <p>Kontūras: {{kidneyContour}}</p>
+        <p>Parenhīma: {{kidneyParehima}}</p>
+        <p>Urostāzi: {{kidneyUrostasi}}</p>
+        <p>Konkrimentus: {{kidneyKonrimentus}}</p>
+      </div>
+      <p>
+        <h2>Slēdziens:</h2> 
+        {{final == 'other' ? finalReason : 'fibroza mastopātijas'}}
+      </p>
       <p>Izmeklējuma datums: {{dateTaken}}</p>
       <p>Ārsts: {{doctorName}}</p>
     </div>
