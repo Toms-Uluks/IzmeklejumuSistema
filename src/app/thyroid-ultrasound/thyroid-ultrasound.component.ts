@@ -13,20 +13,32 @@ export class ThyroidUltrasoundComponent implements OnInit {
   personasKods: string;
 
   isthmusSize: number;
+  isthmusCapacity: string;
   isthmusStructure: string;
   isthmusContour: string;
   isthmusAnomalities: string;
+  isthmusAnomalitiesSize: number;
 
   leftSideSize: number;
+  leftSideCapacity: string;
   leftSideStructure: string;
   leftSideContour: string;
   leftSideAnomalities: string;
+  leftSideAnomalitiesSize: number;
 
   rightSideSize: number;
+  rightSideCapacity: string;
   rightSideStructure: string;
   rightSideContour: string;
   rightSideAnomalities: string;
+  rightSideAnomalitiesSize: number;
 
+  neckThyroid: string;
+  neckThyroidSize: string;
+
+  final: string;
+  recomendation: string;
+  recomendationReason: string;
   dateTaken;
   
   addEvent(type: string, event: MatDatepickerInputEvent<Date>) {

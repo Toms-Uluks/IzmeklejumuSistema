@@ -10,85 +10,287 @@
       </mat-form-field>
     </div>    
     <div>
-        Aknas:
-        <div>
-          <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Izmērs" [(ngModel)]="liverSize">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-              <input matInput  placeholder="Struktūra" [(ngModel)]="liverStructure">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-              <input matInput  placeholder="Ehogenitāte" [(ngModel)]="liverEphogenicity">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-              <input matInput  placeholder="Intrahepatiskie, ekstrahepatiskie žultsvadi" [(ngModel)]="liverDucts">
-          </mat-form-field>
-        </div>
-    </div>
-    <div>
         Žultspūslis:
         <div>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Sieniņas" [(ngModel)]="bladderWalls">
+            <mat-select placeholder="Struktūra" [(value)]="bladderForm">
+              <mat-option value="Parastas formas">Parastas formas</mat-option>
+              <mat-option value="Ar pārliekumu">Ar pārliekumu</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Sieniņas" [(value)]="bladderWalls">
+              <mat-option value="Gludas">Gludas</mat-option>
+              <mat-option value="Nelīdzenas">Nelīdzenas</mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field class="example-full-width">
             <input matInput  placeholder="Biezums (mm)" [(ngModel)]="bladderWidth">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Ehostruktura" [(ngModel)]="bladderEcostructure">
+              <mat-select placeholder="Ehostruktura" [(value)]="bladderEcostructure">
+                <mat-option value="Homogēna">Homogēna</mat-option>
+                <mat-option value="Anehogēns">Anehogēns </mat-option>
+                <mat-option value="Ar multipliem konkrementiem">Ar multipliem konkrementiem </mat-option>
+                <mat-option value="Ar polipiem">Ar polipiem </mat-option>
+              </mat-select>
           </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Komentāri" [(ngModel)]="bladderComments">
+          <mat-form-field class="example-full-width" *ngIf="bladderEcostructure == 'Ar multipliem konkrementiem' || bladderEcostructure == 'Ar polipiem'">
+            <input matInput placeholder="(mm)" [(ngModel)]="bladderEcostructureSize">
           </mat-form-field>
         </div>
+    </div>
+    <div>
+      Aknas:
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Struktūra" [(value)]="liverStructure">
+            <mat-option value="Homogēna">Homogēna</mat-option>
+            <mat-option value="Nehomogēna">Nehomogēna</mat-option>
+            <mat-option value="other">Cita</mat-option>
+          </mat-select>  
+        </mat-form-field>
+        <mat-form-field *ngIf="liverStructure == 'other'" class="example-full-width">
+          <input matInput  placeholder="Cits" [(ngModel)]="liverStructureOther">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Ehogenitāte" [(value)]="liverEphogenicity">
+            <mat-option value="Bez izmaiņām">Bez izmaiņām</mat-option>
+            <mat-option value="Paaugstināta, blīva">Paaugstināta, blīva</mat-option>
+            <mat-option value="other">Cita</mat-option>
+          </mat-select>   
+        </mat-form-field>
+        <mat-form-field *ngIf="liverEphogenicity == 'other'" class="example-full-width">
+          <input matInput  placeholder="Cits" [(ngModel)]="liverEphogenicityOther">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Intrahepatiskie, ekstrahepatiskie žultsvadi" [(ngModel)]="liverDucts">
+        </mat-form-field>
+      </div>
     </div>
     <div>
         Aizkuņģa dziedzeris:
         <div>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Galvas un ķermeņa daļas" [(ngModel)]="pancreaParts">
+            <mat-select placeholder="Ehostruktura" [(value)]="pancreaEcostructure">
+              <mat-option value="Homogēna">Homogēna</mat-option>
+              <mat-option value="Nehomogēna">Nehomogēna</mat-option>
+              <mat-option value="other">Cits</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" *ngIf="pancreaEcostructure == 'other'">
+            <input matInput placeholder="Cits" [(ngModel)]="pancreaEcostructureOther">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+              <mat-select placeholder="Galvas un ķermeņa daļas" [(value)]="pancreaParts">
+                <mat-option value="Parastas forma">Parastas forma</mat-option>
+                <mat-option value="Normāla lieluma">Normāla lieluma</mat-option>
+                <mat-option value="other">Cits</mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" *ngIf="pancreaParts == 'other'">
+            <input matInput placeholder="Cits" [(ngModel)]="pancreaPartsOther">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Izmērs" [(ngModel)]="pancreaSize">
+              <mat-select placeholder="Kontūras" [(value)]="pancreaPartsContour">
+                <mat-option value="Gludas">Gludas</mat-option>
+                <mat-option value="Deformētas">Deformētas</mat-option>
+              </mat-select>  
           </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Ehostruktura" [(ngModel)]="pancreaEcostructure">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Sienas" [(ngModel)]="pancreaWalls">
-          </mat-form-field>
+
           <mat-form-field class="example-full-width">
             <input matInput  placeholder="Astes daļa" [(ngModel)]="pancreaTail">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+              <mat-select placeholder="Astes daļas" [(value)]="pancreaTail">
+                <mat-option value="Parastas forma">Parastas forma</mat-option>
+                <mat-option value="Normāla lieluma">Normāla lieluma</mat-option>
+                <mat-option value="other">Cits</mat-option>
+              </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width" *ngIf="pancreaTail == 'other'">
+            <input matInput placeholder="Cits" [(ngModel)]="pancreaTailOther">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+              <mat-select placeholder="Kontūras" [(value)]="pancreaTailContour">
+                <mat-option value="Gludas">Gludas</mat-option>
+                <mat-option value="Deformētas">Deformētas</mat-option>
+              </mat-select>  
           </mat-form-field>
         </div>
     </div>
     <div>
-        Nieres:
+        Labā niere:
         <div>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Izmērs" [(ngModel)]="kidneySize">
+            <mat-select placeholder="Izmērs" [(value)]="rightKidneySize">
+              <mat-option value="Normāla lieluma">Normāla lieluma</mat-option>
+              <mat-option value="Izmainīta lieluma">Izmainīta lieluma</mat-option>
+            </mat-select>
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Kontūras" [(ngModel)]="kidneyContour">
+            <input matInput  placeholder="(mm)" [(ngModel)]="rightKidneySizeMM">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Kontūras" [(value)]="rightKidneyContour">
+              <mat-option value="Gludas">Gludas</mat-option>
+              <mat-option value="Deformētas">Deformētas</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Parenhīma" [(value)]="rightKidneyParehima">
+              <mat-option value="Vienmērīga biezuma">Vienmērīga biezuma</mat-option>
+              <mat-option value="Nevienmērīga biezuma">Nevienmērīga biezuma</mat-option>
+              <mat-option value="Plāna">Plāna</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="rightKidneyParehima == 'Plāna'" class="example-full-width">
+            <input matInput  placeholder="(mm)" [(ngModel)]="rightKidneyParehimaOther">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Pielovaskulārā zona" [(ngModel)]="rightKidneyZone">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Parenhīma" [(ngModel)]="kidneyParehima">
+            <input matInput  placeholder="Konkrimentus" [(ngModel)]="rightKidneyKonrimentus">
           </mat-form-field>
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Urostāzi" [(ngModel)]="kidneyUrostasi">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Konkrimentus" [(ngModel)]="kidneyKonrimentus">
+            <input matInput  placeholder="Veidojumi" [(ngModel)]="rightKidneyAnomalies">
           </mat-form-field>
 
         </div>
     </div>
     <div>
+        Kreisā niere:
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Izmērs" [(value)]="leftKidneyContour">
+              <mat-option value="Normāla lieluma">Normāla lieluma</mat-option>
+              <mat-option value="Izmainīta lieluma">Izmainīta lieluma</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="(mm)" [(ngModel)]="leftKidneySizeMM">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Kontūras" [(value)]="leftKidneyContour">
+              <mat-option value="Gludas">Gludas</mat-option>
+              <mat-option value="Deformētas">Deformētas</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-select placeholder="Parenhīma" [(value)]="leftKidneyParehima">
+              <mat-option value="Vienmērīga biezuma">Vienmērīga biezuma</mat-option>
+              <mat-option value="Nevienmērīga biezuma">Nevienmērīga biezuma</mat-option>
+              <mat-option value="Plāna">Plāna</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field *ngIf="leftKidneyParehima == 'Plāna'" class="example-full-width">
+            <input matInput  placeholder="(mm)" [(ngModel)]="leftKidneyParehimaOther">
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Pielovaskulārā zona" [(ngModel)]="leftKidneyZone">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Konkrimentus" [(ngModel)]="leftKidneyKonrimentus">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <input matInput  placeholder="Veidojumi" [(ngModel)]="leftKidneyAnomalies">
+          </mat-form-field>
+
+        </div>
+    </div>
+
+    <div>
+      Liesa:
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Izmērs" [(value)]="spleenSize">
+          <mat-option value="Nepalielināti">Nepalielināti</mat-option>
+          <mat-option value="Palielināti">Palielināti</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput  placeholder="(mm)" [(ngModel)]="spleenSizeOther">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Kontūras" [(value)]="spleenContour">
+          <mat-option value="Gludas">Gludas</mat-option>
+          <mat-option value="Deformētas">Deformētas</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Struktūra" [(value)]="spleenStructure">
+          <mat-option value="Homogēna">Homogēna</mat-option>
+          <mat-option value="Inhomogēna">Inhomogēna</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div>
+      Urīnpūslis
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Sienas" [(value)]="bladder2Walls">
+          <mat-option value="Gludas">Gludas</mat-option>
+          <mat-option value="Deformētas">Deformētas</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-select placeholder="Kontūras" [(value)]="bladder2Contents">
+          <mat-option value="Anehogēns">Anehogēns</mat-option>
+          <mat-option value="other">Cits</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="bladder2Contents == 'other'" class="example-full-width">
+        <input matInput  placeholder="Cits" [(ngModel)]="bladder2ContentsOther">
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+          <input matInput placeholder="Vēdera dobuma aorta " [(ngModel)]="bladder2Aorta">
+        </mat-form-field>
+    </div>
+
+    <div>
+      Limfmezgli
+      <mat-form-field class="example-full-width">
+        <mat-select [(value)]="limfmezgli">
+          <mat-option value="Paraoartālie">Paraoartālie</mat-option>
+          <mat-option value="Ingvinālie">Ingvinālie</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <input matInput  placeholder="Limfmezgli" [(ngModel)]="limfmezgliInfo">
+      </mat-form-field>
+    </div>
+
+    <div>
+      Šķidrums vēdera dobumā
+      <mat-form-field class="example-full-width">
+        <mat-select [(value)]="stomachContent">
+          <mat-option value="Nevizualizējas">Nevizualizējas</mat-option>
+          <mat-option value="Vizualizējas">Vizualizējas</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field *ngIf="stomachContent == 'Vizualizējas'" class="example-full-width">
+        <input matInput  placeholder="Limfmezgli" [(ngModel)]="stomachContentOther">
+      </mat-form-field>
+    </div>
+
+    <div>
       Slēdziens: 
       <mat-form-field  class="selector">
         <mat-select [(value)]="final">
-          <mat-option value="true">fibroza mastopātijas</mat-option>
+          <mat-option value="true">USG vizuāla pataloģiju neatrod.</mat-option>
           <mat-option value="other">Cits</mat-option>
         </mat-select>
       </mat-form-field>
@@ -98,6 +300,7 @@
           </mat-form-field>
       </div>
     </div>
+
     <div>
       <mat-form-field>
         <input matInput [matDatepicker]="date" placeholder="Izmeklējuma datums" (dateInput)="addEvent('input', $event)" (dateChange)="addEvent('change', $event)">
@@ -117,39 +320,73 @@
   </div>
   <div *ngIf="preview">
     <div id="print-section" *ngIf="preview">
-      <p>Vārds, Uzvārds: {{name}}</p>
-      <p>Personas kods: {{personasKods}}</p>
+        <h3 style="text-align: center">Vēdera dobuma ultrasonogrāfija</h3>
+        <p>
+            Vārds, Uzvārds: {{name}} <br/>
+            Personas kods: {{personasKods}}
+        </p>
       <div>
-        <h2>Aknas:</h2>
-        <p>Izmers: {{liverSize}}</p>
-        <p>Struktūra: {{liverStructure}}</p>
-        <p>Ehogenitāte: {{liverEphogenicity}}</p>
+        <b>Žultspūslis:</b>
+        <p>{{bladderForm}}</p>
+        <p>Sieniņas: {{bladderWalls}}</p>
+        <p>Biezums: {{bladderWidth}}</p>
+        <p>Ehostruktura: {{bladderEcostructure == 'Ar multipliem konkrementiem' || bladderEcostructure == 'Ar polipiem' ? bladderEcostructure + ' ' + bladderEcostructureSize + 'mm' : bladderEcostructure}}</p>
+      </div>
+      <div>
+        <b>Aknas:</b>
+        <p>Struktūra: {{liverStructure == 'other' ? liverStructureOther : liverStructure}}</p>
+        <p>Ehogenitāte: {{liverEphogenicity == 'other' ? liverEphogenicityOther : liverEphogenicity}}</p>
         <p>Intrahepatiskie, ekstrahepatiskie žultsvadi: {{liverDucts}}</p>
       </div>
       <div>
-        <h2>Žultspūslis:</h2>
-        <p>Sieniņas: {{bladderWalls}}</p>
-        <p>Biezums: {{bladderWidth}}</p>
-        <p>Ehostruktura: {{bladderEcostructure}}</p>
-        <p>Komentāri: {{bladderComments}}</p>
+        <b>Aizkuņģa dziedzeris:</b>
+        <p>Ehostruktura: {{pancreaEcostructure == 'other' ? pancreaEcostructureOther : pancreaEcostructure}}</p>
+        <p>Galvas un ķermeņa daļas: {{pancreaParts == 'other' ? pancreaPartsOther : pancreaParts}} <br/>
+           Kontūras: {{pancreaPartsContour}}
+        </p>
+        <p>Astes daļa: {{pancreaTail == 'other' ? pancreaTailOther : pancreaTail}} <br/>
+           Kontūras: {{pancreaTailContour}}
+        </p>
       </div>
       <div>
-        <h2>Aizkuņģa dziedzeris:</h2>
-        <p>Galvas un ķermeņa daļas: {{pancreaParts}}</p>
-        <p>Izmērs: {{pancreaSize}}</p>
-        <p>Ehostruktura: {{pancreaEcostructure}}</p>
-        <p>Sieniņas: {{pancreaWalls}}</p>
-        <p>Astes daļa: {{pancreaTail}}</p>
-      </div>
-      <div>
-        <h2>Nieres:</h2>
-        <p>Izmērs: {{kidneySize}}</p>
+        <b>Labā niere:</b>
+        <p>Izmērs: {{rightKidneySize + ' ' + rightKidneySizeMM + 'mm'}}</p>
         <p>Kontūras: {{kidneyContour}}</p>
-        <p>Parenhīma: {{kidneyParehima}}</p>
-        <p>Urostāzi: {{kidneyUrostasi}}</p>
+        <p>Parenhīma: {{rightKidneyParehima == 'Plāna' ? rightKidneyParehima + ' ' + rightKidneyParehimaOther + 'mm' : rightKidneyParehima}}</p>
+        <p>Pielovaskulārā zona: {{rightKidneyZone}}</p>
         <p>Konkrimentus: {{kidneyKonrimentus}}</p>
+        <p>Veidojumi: {{rightKidneyAnomalies}}</p>
       </div>
-      <hs2>Slēdziens:</h2> 
+      <div>
+        <b>Kreisā niere:</b>
+        <p>Izmērs: {{leftKidneySize + ' ' + leftKidneySizeMM + 'mm'}}</p>
+        <p>Kontūras: {{kidneyContour}}</p>
+        <p>Parenhīma: {{leftKidneyParehima == 'Plāna' ? leftKidneyParehima + ' ' + leftKidneyParehimaOther + 'mm' : leftKidneyParehima}}</p>
+        <p>Pielovaskulārā zona: {{leftKidneyZone}}</p>
+        <p>Konkrimentus: {{kidneyKonrimentus}}</p>
+        <p>Veidojumi: {{leftKidneyAnomalies}}</p>
+      </div>
+      <div>
+        <b>Liesa:</b>
+        <p>Izmērs: {{spleenSize + ', ' + spleenSizeOther + 'mm'}}</p>
+        <p>Kontūras: {{lspleenContour}}</p>
+        <p>Struktūra: {{spleenStructure}}</p>
+      </div>
+      <div>
+        <b>Urīnpūslis:</b>
+        <p>Sienas: {{bladder2Walls}}</p>
+        <p>Kontūras: {{bladder2Contents == 'other' ? bladder2ContentsOther : bladder2Contents}}</p>
+        <p>Vēdera dobuma aorta: {{bladder2Aorta}}</p>
+      </div>
+      <div>
+        <b>Limfmezgli:</b>
+        <p>{{limfmezgli }} <br/>{{limfmezgliInfo}}</p>
+      </div>
+      <div>
+        <b>Šķidrums vēdera dobumā</b>
+        <p>{{stomachContent == 'Vizualizējas' ? stomachContentOther : stomachContent}}</p>
+      </div>
+      <b>Slēdziens:</b> 
       <p>
         {{final == 'other' ? finalReason : 'fibroza mastopātijas'}}
       </p>

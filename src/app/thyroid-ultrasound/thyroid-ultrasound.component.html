@@ -13,16 +13,31 @@
       Isthmus:
       <div>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="isthmusSize">
+          <input matInput  placeholder="Izmērs (mm)" [(ngModel)]="isthmusSize">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Struktūra" [(ngModel)]="isthmusStructure">
+          <input matInput placeholder="Tilpums" [(ngModel)]="isthmusCapacity">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Kontūras" [(ngModel)]="isthmusContour">
+          <mat-select placeholder="Struktūra" [(value)]="isthmusStructure">
+            <mat-option value="Homogēna">Homogēna</mat-option>
+            <mat-option value="Nehomogēna">Nehomogēna</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Veidojumi" [(ngModel)]="isthmusAnomalities">
+            <mat-select placeholder="Kontūras" [(value)]="isthmusContour">
+              <mat-option value="Gludas">Gludas</mat-option>
+              <mat-option value="Deformētas">Deformētas</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Mezgli" [(value)]="isthmusAnomalities">
+            <mat-option value="Hipoehogēni">Hipoehogēni </mat-option>
+            <mat-option value="Hiperehogēni">Hiperehogēni</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Mezgli (mm)" [(ngModel)]="isthmusAnomalitiesSize">
         </mat-form-field>
       </div>
   </div>
@@ -33,13 +48,29 @@
           <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="leftSideSize">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Struktūra" [(ngModel)]="leftSideStructure">
+          <input matInput placeholder="Tilpums" [(ngModel)]="leftSideCapacity">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Kontūras" [(ngModel)]="leftSideContour">
+          <mat-select placeholder="Struktūra" [(value)]="leftSideStructure">
+            <mat-option value="Homogēna">Homogēna</mat-option>
+            <mat-option value="Nehomogēna">Nehomogēna</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Veidojumi" [(ngModel)]="leftSideAnomalities">
+            <mat-select placeholder="Kontūras" [(value)]="leftSideContour">
+              <mat-option value="Gludas">Gludas</mat-option>
+              <mat-option value="Deformētas">Deformētas</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Mezgli" [(value)]="leftSideAnomalities">
+            <mat-option value="Hipoehogēni">Hipoehogēni </mat-option>
+            <mat-option value="Hiperehogēni">Hiperehogēni</mat-option>
+            <mat-option value="Ar kalcinātiem">Ar kalcinātiem </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Mezgli (mm)" [(ngModel)]="leftSideAnomalitiesSize">
         </mat-form-field>
       </div>
   </div>
@@ -50,27 +81,75 @@
           <input matInput  placeholder="Izmērs (cm)" [(ngModel)]="rightSideSize">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Struktūra" [(ngModel)]="rightSideStructure">
+          <input matInput placeholder="Tilpums" [(ngModel)]="rightSideCapacity">
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Kontūras" [(ngModel)]="rightSideContour">
+          <mat-select placeholder="Struktūra" [(value)]="rightSideStructure">
+            <mat-option value="Homogēna">Homogēna</mat-option>
+            <mat-option value="Nehomogēna">Nehomogēna</mat-option>
+          </mat-select>
         </mat-form-field>
         <mat-form-field class="example-full-width">
-          <input matInput  placeholder="Veidojumi" [(ngModel)]="rightSideAnomalities">
+            <mat-select placeholder="Kontūras" [(value)]="rightSideContour">
+              <mat-option value="Gludas">Gludas</mat-option>
+              <mat-option value="Deformētas">Deformētas</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <mat-select placeholder="Mezgli" [(value)]="rightSideAnomalities">
+            <mat-option value="Hipoehogēni">Hipoehogēni </mat-option>
+            <mat-option value="Hiperehogēni">Hiperehogēni</mat-option>
+            <mat-option value="Ar kalcinātiem">Ar kalcinātiem </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Mezgli (mm)" [(ngModel)]="rightSideAnomalitiesSize">
         </mat-form-field>
       </div>
+  </div>
+  <div>
+    Kakla limfmezgli:
+    <mat-form-field class="example-full-width">
+      <mat-select placeholder="Mezgli" [(value)]="neckThyroid">
+        <mat-option value="Nevizualizējas">Nevizualizējas </mat-option>
+        <mat-option value="Vizualizējas specifiski">Vizualizējas specifiski</mat-option>
+        <mat-option value="Vizualizējas nespecifiski ">Vizualizējas nespecifiski  </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" *ngIf="neckThyroid && neckThyroid !== 'Nevizualizējas'">
+      <input matInput placeholder="Mezgli (mm)" [(ngModel)]="neckThyroidSize">
+    </mat-form-field>
   </div>
   <div>
     Slēdziens: 
     <mat-form-field  class="selector">
       <mat-select [(value)]="final">
-        <mat-option value="true">fibroza mastopātijas</mat-option>
+        <mat-option value="Bez vizuālas pataloģijas">Bez vizuālas pataloģijas</mat-option>
+        <mat-option value="Autoimūns tiroidīts">Autoimūns tiroidīts</mat-option>
+        <mat-option value="Multinodulāra struma">Multinodulāra struma</mat-option>
+        <mat-option value="Nodulāra struma">Nodulāra struma</mat-option>
         <mat-option value="other">Cits</mat-option>
       </mat-select>
     </mat-form-field>
     <div *ngIf="final == 'other'">
         <mat-form-field class="example-full-width">
           <textarea matInput placeholder="Cits" [(ngModel)]="finalReason"></textarea>
+        </mat-form-field>
+    </div>
+  </div>
+  <div>
+    Rekomendācijas: 
+    <mat-form-field  class="selector">
+      <mat-select [(value)]="recomendation">
+        <mat-option value="Atkārtota USG kontrole pēc">Atkārtota USG kontrole pēc</mat-option>
+        <mat-option value="Mammologa konsultācija">Mammologa konsultācija</mat-option>
+        <mat-option value="Mammogrāfija">Mammogrāfija</mat-option>
+        <mat-option value="other">Cits</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="recomendation == 'other' || recomendation == 'Atkārtota USG kontrole pēc'">
+        <mat-form-field class="example-full-width">
+          <input matInput [(ngModel)]="recomendationReason">
         </mat-form-field>
     </div>
   </div>
@@ -85,7 +164,7 @@
   <div>
     <mat-form-field  class="selector">
       <mat-select [(value)]="doctorName">
-        <mat-option *ngFor="let doctor of doctors" value="{{doctor.id}}">{{doctor.name}}</mat-option>
+        <mat-option value="Ausma Erdmane">Ausma Erdmane</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -93,30 +172,41 @@
 </div>
 <div *ngIf="preview">
   <div id="print-section" *ngIf="preview">
-    <p>Vārds, Uzvārds: {{name}}</p>
-    <p>Personas kods: {{personasKods}}</p>
+    <h3 style="text-align: center">Vairogdziedzera ultrasonografija</h3>
+    <p>
+        Vārds, Uzvārds: {{name}} <br/>
+        Personas kods: {{personasKods}}
+    </p>    
     <div>
-      <h2>Isthmus:</h2>
-      <p>Izmers: {{isthmusSize}}</p>
+      <b>Isthmus:</b>
+      <p>Izmērs: {{isthmusSize}}</p>
+      <p>Tilpums: {{isthmusCapacity}}</p>
       <p>Struktūra: {{isthmusStructure}}</p>
       <p>Kontūras: {{isthmusContour}}</p>
-      <p>Veidojumi: {{isthmusAnomalities}}</p>
+      <p>Veidojumi: {{isthmusAnomalities + ' ' + isthmusAnomalitiesSize}}</p>
     </div>
     <div>
-      <h2>Kreisā daiva:</h2>
-      <p>Izmers: {{leftSideSize}}</p>
+      <b>Kreisā daiva:</b>
+      <p>Izmērs: {{leftSideSize}}</p>
+      <p>Tilpums: {{leftSideCapacity}}</p>
       <p>Struktūra: {{leftSideStructure}}</p>
       <p>Kontūras: {{leftSideContour}}</p>
-      <p>Veidojumi: {{leftSideAnomalities}}</p>
+      <p>Veidojumi: {{leftSideAnomalities + ' ' + leftSideAnomalitiesSize}}</p>
     </div>
     <div>
-      <h2>Labā daiva:</h2>
-      <p>Izmers: {{rightSideSize}}</p>
+      <b>Labā daiva:</b>
+      <p>Izmērs: {{rightSideSize}}</p>
+      <p>Tilpums: {{rightSideCapacity}}</p>
       <p>Struktūra: {{rightSideStructure}}</p>
       <p>Kontūras: {{rightSideContour}}</p>
-      <p>Veidojumi: {{rightSideAnomalities}}</p>
+      <p>Veidojumi: {{rightSideAnomalities + ' ' + rightSideAnomalitiesSize}}</p>
+    </div>
+    <div>
+      <b>Kakla limfmezgli:</b>
+      <p>{{neckThyroid !== 'Nevizualizējas' ? neckThyroid + ' ' + neckThyroidSize + 'mm'  : neckThyroid}}</p>
     </div>
     <p>Slēdziens: {{final == 'other' ? finalReason : 'fibroza mastopātijas'}}</p>
+    <p>Rekomendācijas: {{recomendation == 'other' ? recomendationReason : (recomendation == 'Atkārtota USG kontrole pēc' ? recomendation + ' ' + recomendationReason : recomendation)}}</p>
     <p>Izmeklējuma datums: {{dateTaken}}</p>
     <p>Ārsts: {{doctorName}}</p>
   </div>

@@ -8,25 +8,61 @@ import { Component, OnInit } from '@angular/core';
 export class AbdominalCavityUltrasoundComponent implements OnInit {
   preview: boolean;
 
-  liverSize: string;
-  liverStructure: string;
-  liverEphogenicity: string;
-  liverDucts : string;
   bladderWalls: string;
   bladderWidth: string;
   bladderEcostructure: string;
-  bladderComments: string;
-  pancreaParts: string;
-  pancreaSize: string;
-  pancreaEcostructure: string;
-  pancreaWalls: string;
-  pancreaTail: string;
-  kidneySize: string;
-  kidneyContour: string;
-  kidneyParehima: string;
-  kidneyUrostasi: string;
-  kidneyKonrimentus: string;
+  bladderForm: string;
+  bladderEcostructureSize: string;
+
+  liverStructureOther: string;
+  liverEphogenicityOther: string;
+  liverStructure: string;
+  liverEphogenicity: string;
+  liverDucts : string;
   
+  pancreaParts: string;
+  pancreaEcostructureOther: string;
+  pancreaEcostructure: string;
+  pancreaPartsOther: string;
+  pancreaPartsContour: string;
+  pancreaTail: string;
+  pancreaTailOther: string;
+  pancreaTailContour: string;
+
+  rightKidneySize: string;
+  rightKidneySizeMM: string;
+  rightKidneyContour: string;
+  rightKidneyZone: string;
+  rightKidneyParehima: string;
+  rightKidneyParehimaOther: string;
+  rightKidneyAnomalies: string;
+  rightKidneyKonrimentus: string;  
+  
+  leftKidneySize: string;
+  leftKidneySizeMM: string;
+  leftKidneyContour: string;
+  leftKidneyZone: string;
+  leftKidneyParehima: string;
+  leftKidneyParehimaOther: string;
+  leftKidneyAnomalies: string;
+  leftKidneyKonrimentus: string; 
+
+  spleenSize: string;
+  spleenSizeOther: string;
+  spleenContour: string;
+  spleenStructure: string;
+
+  bladder2Walls: string;
+  bladder2Contents: string;
+  bladder2ContentsOther: string;
+  bladder2Aorta: string;
+
+  limfmezgli: string;
+  limfmezgliInfo: string;
+
+  stomachContent: string;
+  stomacContentOther: string;
+
   final: string;
   doctorName: string;
 

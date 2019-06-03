@@ -13,6 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule, MatSelectModule, MatInputModule, MatFormFieldModule, MatDatepickerModule, MatNativeDateModule} from '@angular/material';
+import { ProstateCheckComponent } from './prostate-check/prostate-check.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {MatButtonModule, MatCheckboxModule, MatSelectModule, MatInputModule, Mat
     HomeComponent,
     ChestUsgComponent,
     ThyroidUltrasoundComponent,
-    AbdominalCavityUltrasoundComponent
+    AbdominalCavityUltrasoundComponent,
+    ProstateCheckComponent
   ],
   imports: [
     BrowserModule,

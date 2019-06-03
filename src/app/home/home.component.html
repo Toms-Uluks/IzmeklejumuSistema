@@ -5,6 +5,7 @@
         <mat-option value="chestUsg">Krūšu USG</mat-option>
         <mat-option value="abdominalUltrasound">Vēdera dobuma ultrasonografija</mat-option>
         <mat-option value="thyroidUltrasound">Vairogdziedzera ultrasonografija</mat-option>
+        <mat-option value="prostateCheck">Prostatas USG</mat-option>
       </mat-select>
     </mat-form-field>
   </div>
@@ -13,6 +14,7 @@
     <app-chest-usg *ngIf="selected == 'chestUsg'"></app-chest-usg>
     <app-abdominal-cavity-ultrasound *ngIf="selected == 'abdominalUltrasound'"></app-abdominal-cavity-ultrasound>
     <app-thyroid-ultrasound *ngIf="selected == 'thyroidUltrasound'"></app-thyroid-ultrasound>
+    <app-prostate-check *ngIf="selected == 'prostateCheck'"></app-prostate-check>
     <button mat-raised-button color="primary" (click)="print()">Printēt</button>
   </div>
   

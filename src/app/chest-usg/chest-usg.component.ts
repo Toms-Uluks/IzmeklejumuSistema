@@ -9,17 +9,27 @@ import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 export class ChestUsgComponent implements OnInit {
   preview: boolean;
 
-  limfmezgli: string;
-  bothchest: string;
-  anomalities: string;
+  Alimfmezgli = 'Nevizualizējas';
+  Blimfmezgli = 'Nevizualizējas';
+  Climfmezgli = 'Nevizualizējas';
+  rightChest = '';
+  leftChest = '';
+  rightChestAnomalities = '';
+  leftChestAnomalities = '';
+  recomendation: string;
   final: string;
   doctorName: string;
-
+  
   name = '';
   personasKods = '';
-  limfmezgliReason = '';
-  bothchestReason = '';
-  anomalitiesReason = '';
+  AlimfmezgliReason = '';
+  BlimfmezgliReason = '';
+  ClimfmezgliReason = '';
+  rightChestReason = '';
+  rightChestAnomalitiesReason = '';
+  leftChestReason = '';
+  leftChestAnomalitiesReason = '';
+  recomendationReason = '';
   finalReason = '';
   dateTaken;
   
@@ -28,22 +38,12 @@ export class ChestUsgComponent implements OnInit {
     this.dateTaken = this.dateTaken.toISOString().substring(0, 10);
   }
 
+
+
   doctors: [
     {
       id: 1,
-      name: 'Test1'
-    },
-    {
-      id: 2,
-      name: 'Test2'
-    },
-    {
-      id: 3,
-      name: 'Test3'
-    },
-    {
-      id: 3,
-      name: 'Test3'
+      name: 'Ausma Erdmane'
     }
   ]
   constructor() { }
