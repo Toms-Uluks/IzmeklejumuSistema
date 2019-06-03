@@ -102,9 +102,6 @@
           </mat-form-field>
 
           <mat-form-field class="example-full-width">
-            <input matInput  placeholder="Astes daļa" [(ngModel)]="pancreaTail">
-          </mat-form-field>
-          <mat-form-field class="example-full-width">
               <mat-select placeholder="Astes daļas" [(value)]="pancreaTail">
                 <mat-option value="Parastas forma">Parastas forma</mat-option>
                 <mat-option value="Normāla lieluma">Normāla lieluma</mat-option>
@@ -351,7 +348,7 @@
       <div>
         <b>Labā niere:</b>
         <p>Izmērs: {{rightKidneySize + ' ' + rightKidneySizeMM + 'mm'}}</p>
-        <p>Kontūras: {{kidneyContour}}</p>
+        <p>Kontūras: {{rightkidneyContour}}</p>
         <p>Parenhīma: {{rightKidneyParehima == 'Plāna' ? rightKidneyParehima + ' ' + rightKidneyParehimaOther + 'mm' : rightKidneyParehima}}</p>
         <p>Pielovaskulārā zona: {{rightKidneyZone}}</p>
         <p>Konkrimentus: {{kidneyKonrimentus}}</p>
@@ -360,7 +357,7 @@
       <div>
         <b>Kreisā niere:</b>
         <p>Izmērs: {{leftKidneySize + ' ' + leftKidneySizeMM + 'mm'}}</p>
-        <p>Kontūras: {{kidneyContour}}</p>
+        <p>Kontūras: {{leftkidneyContour}}</p>
         <p>Parenhīma: {{leftKidneyParehima == 'Plāna' ? leftKidneyParehima + ' ' + leftKidneyParehimaOther + 'mm' : leftKidneyParehima}}</p>
         <p>Pielovaskulārā zona: {{leftKidneyZone}}</p>
         <p>Konkrimentus: {{kidneyKonrimentus}}</p>
@@ -369,7 +366,7 @@
       <div>
         <b>Liesa:</b>
         <p>Izmērs: {{spleenSize + ', ' + spleenSizeOther + 'mm'}}</p>
-        <p>Kontūras: {{lspleenContour}}</p>
+        <p>Kontūras: {{spleenContour}}</p>
         <p>Struktūra: {{spleenStructure}}</p>
       </div>
       <div>
